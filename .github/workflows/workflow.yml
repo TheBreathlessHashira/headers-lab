@@ -2,25 +2,25 @@ name: Run Python Script and Upload Artifact
 on: [push, pull_request]
 jobs:
   build:
-  runs-on: ubuntu-latest
-  
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    - name: Run headers.py
-      run: python headers.py
+      - name: Run headers.py
+        run: python headers.py
 
-    - name: Upload JSON artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: output-json
-        path: output.json
+      - name: Upload JSON artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-json
+          path: output.json
